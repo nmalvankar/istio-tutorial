@@ -1,11 +1,11 @@
-= Java (Spring Boot, Vert.x and Microprofile) + Istio on Kubernetes/OpenShift
+= Polyglot microservices (Java, Node, .NET) + Istio on Kubernetes/OpenShift
 This content is brought to you by http://developers.redhat.com - Register today!
 :toc: macro
 :toc-title: Table of Contents
 :toclevels: 3
 :icons: font
 :data-uri:
-:source-highlighter: highlight.js
+:source-highlighter: highlightjs
 
 
 - A HTML version of this file is published at https://redhat-developer-demos.github.io/istio-tutorial/
@@ -23,32 +23,4 @@ There are three different and super simple microservices in this system and they
 ```
 customer → preference → recommendation
 ```
-
-For now, they have a simple exception handling solution for dealing with a missing dependent service: it just returns the error message to the end-user.
-
-There are two more simple apps that illustrate how Istio handles egress routes: link:egress/egressgithub[`egressgithub`] and link:egress/egresshttpbin[`egresshttpbin`]
-
-toc::[]
-
-include::docs/1setup.adoc[]
-
-include::docs/2deploy-microservices.adoc[]
-
-include::docs/3monitoring-tracing.adoc[]
-
-include::docs/4simple-routerules.adoc[]
-
-include::docs/5advanced-routerules.adoc[]
-
-include::docs/6fault-injection.adoc[]
-
-include::docs/7circuit-breaker.adoc[]
-
-include::docs/8egress.adoc[]
-
-== Advanced use cases
-
-include::docs/advanced/virtualization.adoc[]
-
-include::docs/9tips.adoc[]
 

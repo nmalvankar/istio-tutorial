@@ -1,20 +1,13 @@
 package com.redhat.developer.demos;
 
 import io.opentracing.Span;
-import io.opentracing.Tracer;
 import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.camel.builder.ExpressionBuilder;
-import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.http.common.HttpOperationFailedException;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.opentracing.ActiveSpanManager;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 @Component("CustomerCamelRoute")
 public class CustomerCamelRoute extends RouteBuilder {
@@ -29,7 +22,7 @@ public class CustomerCamelRoute extends RouteBuilder {
                 .contextPath("/")
                 .bindingMode(RestBindingMode.auto);
 
-        rest("/").get().consumes("text/plain")
+        rest("/").get().consumes(MediaType.TEXT_PLAIN_VALUE)
                 .route().routeId("root")
                 .pipeline()
                     .bean("CustomerCamelRoute", "addTracer")
